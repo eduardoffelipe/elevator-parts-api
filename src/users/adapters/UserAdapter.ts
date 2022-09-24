@@ -4,7 +4,6 @@ import { IUserAdapter } from "./IUserAdapter";
 
 export class UserAdapter implements IUserAdapter {
   async handleCreateUser(createdUser: CreateUserDto): Promise<CreateUserDto> {
-    console.log('user', createdUser)
     const hashedPass = await hash(createdUser.password, +process.env.PASS_SALTS);
     return {
       ...createdUser,
